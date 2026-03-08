@@ -3,13 +3,13 @@ import "izitoast/dist/css/iziToast.min.css";
 
 const form = document.querySelector(".form");
 
-const makePromise = ({ value, delay, shouldResolve}) => {
+const makePromise = ({ delay, shouldResolve}) => {
   return new Promise((resolve, reject) => {
 	   setTimeout(() => {
 				if(shouldResolve) {
-					resolve(`✅ Fulfilled promise in ${delay}ms`)
+					resolve(delay)
 				} else {
-					reject(`❌ Rejected promise in ${delay}ms`)
+					reject(delay)
 				}
 			}, delay);
   });
@@ -23,8 +23,9 @@ form.addEventListener("submit", (event) => {
     const shouldResolve = selectedState === "fulfilled";
 
 
-    makePromise({ value: "promise-result", delay: delayValue, shouldResolve })
-        .then(message => {
+    makePromise({ delay: delayValue, shouldResolve })
+        .then(delay => {
+            const message = `✅ Fulfilled promise in ${delay}ms`;
             iziToast.success({
                 message: message,
                 position: "topRight",
@@ -36,7 +37,8 @@ form.addEventListener("submit", (event) => {
             });
             console.log(message);
         })
-        .catch(message => {
+        .catch(delay => {
+            const message = `❌ Rejected promise in ${delay}ms`;
             iziToast.error({
                 message: message,
                 position: "topRight",

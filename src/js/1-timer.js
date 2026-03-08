@@ -4,6 +4,8 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 const startButton = document.querySelector("button[data-start]");
+const input = document.querySelector("#datetime-picker");
+
 startButton.disabled = true;
 
 let userSelectedDate = null;
@@ -60,8 +62,6 @@ function convertMs(ms) {
 };
 
 startButton.addEventListener("click", () => {
-    const input = document.querySelector("#datetime-picker");
-
     startButton.disabled = true;
     input.disabled = true;
 
@@ -74,7 +74,6 @@ startButton.addEventListener("click", () => {
         if (deltaTime <= 0) {
             clearInterval(timerID);
             updateTimerInterface({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-            startButton.disabled = false;
             input.disabled = false;
             return;
         }
