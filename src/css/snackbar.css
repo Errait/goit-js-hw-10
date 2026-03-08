@@ -1,0 +1,23 @@
+.container {
+}
+.form {
+    max-width: 250px;
+}
+input {
+    border: 3px solid gray;
+}
+.form > label {
+    display: flex;
+    flex-direction: column;
+}
+fieldset {
+    display: flex;
+    border: 3px solid gray;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+button {
+    width: 250px;
+}
